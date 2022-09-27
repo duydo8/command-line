@@ -33,14 +33,41 @@ func main() {
 		Name: "username",
 		Help: "get username",
 		Func: func(c *ishell.Context) {
-			c.Println(os.Getenv("USERNAME1"))
-		},
-	})
-	shell.AddCmd(&ishell.Cmd{
-		Name: "password",
-		Help: "generate password",
-		Func: func(c *ishell.Context) {
-			c.Println(os.Getenv("PASSWORD"))
+			shell.AddCmd(&ishell.Cmd{
+				Name: "password",
+				Help: "generate password",
+				Func: func(c *ishell.Context) {
+					shell.AddCmd(&ishell.Cmd{
+						Name: "change pass",
+						Help: "change password",
+						Func: func(c *ishell.Context) {
+							c.Println(os.Getenv("PASSWORD"))
+						},
+					})
+					shell.AddCmd(&ishell.Cmd{
+						Name: "forgot pass",
+						Help: "forgot password",
+						Func: func(c *ishell.Context) {
+							c.Println(os.Getenv("PASSWORD"))
+						},
+					})
+				},
+			})
+			shell.AddCmd(&ishell.Cmd{
+				Name: "hello",
+				Help: "hello",
+				Func: func(c *ishell.Context) {
+					c.Println(os.Getenv("PASSWORD"))
+				},
+			})
+			shell.AddCmd(&ishell.Cmd{
+				Name: "greeting",
+				Help: "greeting",
+				Func: func(c *ishell.Context) {
+					c.Println(os.Getenv("PASSWORD"))
+				},
+			})
+
 		},
 	})
 
